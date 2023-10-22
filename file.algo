@@ -1,0 +1,43 @@
+ALGORITHM gomycode
+VAR
+    sentence (une chaîne de caractères)
+    sentenceLength (un entier)
+    wordCount (un entier)
+    vowelCount (un entier)
+    index (un entier)
+
+BEGIN
+    // Lire la phrase
+    READ sentence
+
+    // Initialiser les compteurs à zéro
+    sentenceLength = 0
+    wordCount = 0
+    vowelCount = 0
+
+    // Parcourir la phrase caractère par caractère
+    index = 1
+    TANT QUE index <= LONGUEUR(sentence)
+        caractereCourant = CARACTERE_A_LA_POSITION(sentence, index)
+        
+        // Compter la longueur de la phrase
+        sentenceLength = sentenceLength + 1
+
+        // Compter les voyelles (A, E, I, O, U)
+        SI caractereCourant est une voyelle
+            vowelCount = vowelCount + 1
+        FIN SI
+
+        // Compter les mots (en supposant que les mots sont séparés par un espace)
+        SI caractereCourant est un espace ET (index < LONGUEUR(sentence) OU CARACTERE_A_LA_POSITION(sentence, index) N'EST PAS un espace)
+            wordCount = wordCount + 1
+        FIN SI
+
+        index = index + 1
+    FIN TANT QUE
+
+    // Afficher les résultats
+    AFFICHER "Longueur de la phrase : ", sentenceLength
+    AFFICHER "Nombre de mots : ", wordCount
+    AFFICHER "Nombre de voyelles : ", vowelCount
+END
